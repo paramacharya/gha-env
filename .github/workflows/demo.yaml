@@ -27,7 +27,7 @@ jobs:
       - name: install dep
         run: npm ci
       - name: run server
-        run: npm start & npm wait-on http://127.0.0.1:$PORT
+        run: npm start & npx wait-on http://127.0.0.1:$PORT
       - name: run test
         run: npm test
       - name: output information
