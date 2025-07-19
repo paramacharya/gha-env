@@ -10,7 +10,7 @@ env:
   MONGODB_DB_NAME: gajulapavans-mongodb
 jobs:
   test:
-    environment:
+    env:
       MONGODB_CLUSTER_ADDRESS: gajulapavans-mongodb.fxcatwc.mongodb.net 
       MONGODB_USERNAME: gajulapavans
       MONGODB_PASSWORD: Tpw$4itmhp
