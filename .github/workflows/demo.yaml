@@ -1,0 +1,42 @@
+name:test env
+on:
+  push:
+    workflow_dispatch:
+    push:
+      branches:
+        - main
+        - dev
+env:   
+  MONGODB_DB_NAME: gajulapavans-mongodb
+jobs:
+  test:
+    environment:
+      MONGODB_CLUSTER_ADDRESS: gajulapavans-mongodb.fxcatwc.mongodb.net 
+      MONGODB_USERNAME: gajulapavans
+      MONGODB_PASSWORD: Tpw$4itmhp
+      PORT: 8080
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout ocde
+        uses: actions/checkout@v4
+      - name: cache dep
+        uses: actions/checckout@v4
+        with:
+          path: ~/.npm
+          key: npm-deps-${{ hashFiles('**/package-lock.json') }}
+      - name: install dep
+        run: npm ci
+      - name: run server
+        run: npm start & npm wait-on http://127.0.0.1:$PORT
+      - name: run test
+        run: npm test
+      - name: output information
+        run: echo "..."
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: output information
+        run: |
+          echo "MONGODB_CLUSTER_ADDRESS= ${{ env.MONGODB_CLUSTER_ADDRESS }}"
+          echo "MONGODB_USERNAME= $MONGODB_USERNAME"
