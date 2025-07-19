@@ -20,7 +20,7 @@ jobs:
       - name: checkout ocde
         uses: actions/checkout@v4
       - name: cache dep
-        uses: actions/checckout@v4
+        uses: actions/checkout@v4
         with:
           path: ~/.npm
           key: npm-deps-${{ hashFiles('**/package-lock.json') }}
