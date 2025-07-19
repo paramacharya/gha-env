@@ -41,4 +41,4 @@ jobs:
         run: |
           echo "MONGODB_CLUSTER_ADDRESS= ${{ env.MONGODB_CLUSTER_ADDRESS }}"
           echo "MONGODB_USERNAME= ${{ env.MONGODB_USERNAME }}"
-          eccho "MONGODB_DB_NAME= $MONGODB_DB_NAME"
+          echo "MONGODB_DB_NAME= $MONGODB_DB_NAME"
